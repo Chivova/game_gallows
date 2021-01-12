@@ -1,7 +1,8 @@
-const words = ['мавпа', 'собака', 'ведмідь', 'котик', 'порося', 'зайченя', 'тюлень', 'корова', 'слон', 'півень',
-    'лисиця', 'кенгуру', 'черепаха'];
 
 const pickWord = function () { 
+    const words = ['мавпа', 'собака', 'ведмідь', 'котик', 'порося', 'зайченя', 'тюлень', 'корова', 'слон', 'півень',
+        'лисиця', 'кенгуру', 'черепаха'];
+    
     return words[Math.floor(Math.random() * words.length)];
 };
 
@@ -14,29 +15,29 @@ for (let i = 0; i < word.length; i += 1) {
 };
 
 const showPlayerProgress = function (answerArray) { 
-    return alert(`Твій прогрес     ${answerArray.join(' ')}`);
+     alert(`Твій прогрес     ${answerArray.join(' ')}`);
 };
 
 const getGuess = function () { 
-   return  prompt('Вгадай слово або натисни Cancel, щоб зупинити гру');
+    return prompt('Вгадай слово або натисни Cancel, щоб зупинити гру');
 };
 
 const updateGameState = function (guess, word, answerArray) { 
+    let appearances = 0;
     guess = guess.toLowerCase();
 
     for (let j = 0; j < word.length; j += 1) { 
+        
         if (word[j] === guess) {
-                // remainingLetters -= 1;
-               return answerArray[j] = guess;
+            answerArray[j] = guess;
+            appearances += 1;
             } 
-        }
+    }
+    return appearances;
 };
 
 const showAnswerAndCongratulatePlayer = function (answerArray) {
-
-    alert(answerArray.join(' '));
-    alert(`Гарна робота! Відповідь було слово  ${word}`);
-    
+    alert(`Гарна робота! Відповідь було слово  ${answerArray.join(' ')}`);
 };
  
 const word = pickWord();
